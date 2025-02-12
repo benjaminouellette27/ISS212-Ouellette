@@ -1,0 +1,20 @@
+# Sources
+# WK3-portscanner.sh
+# Used chatgpt to debug lines 6 and 9
+ 
+#!/bin/bash
+
+read -p "Enter target IP address: " target_ip
+read -p "Enter starting port: " start_port
+read -p "Enter ending port: " ending_port
+
+echo "Scanning open ports on $target_ip from $start_port to $ending_port..."
+for port in $(seq $start_port $ending_port); do
+	results=$(powershell.exe -Command "(New-Object System.Net.Sockets.TcpClient).Connect('$target_ip', $port)")
+	if [[ "$results" == "" ]]; then
+		echo "Port $port is open"
+	else 
+		echo "Port $port is closed"
+	fi
+done
+

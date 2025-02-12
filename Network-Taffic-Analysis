@@ -1,0 +1,13 @@
+#Sources
+#WK3 - Tool Dev Ex.1 - Example Script
+
+#!/bin/bash
+
+read -p "Enter the pack size in bytes: " packet_size
+if [ "$packet_size" -ge 100 ]; then
+	echo "True - Packet meets the threshold requirements"
+else
+	echo "False - Packet is to small to analyze"
+fi
+
+

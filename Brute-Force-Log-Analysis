@@ -1,0 +1,21 @@
+# sources
+# Used ChatGPT to help debug my output
+# Used the example script provided
+#Used ChatGPT to breakdown each line of code, explaining what it does
+#to better understand the program.  
+
+
+#!/bin/bash
+
+log_file="sim_auth.log" 
+suspicious_ips=("199.203.100.13" "10.0.0.35" "192.168.1.50")
+
+echo "Analyzing logs for suspicious activity..."
+
+while IFS= read -r line; do
+	for ip in "${suspicious_ips[@]}"; do
+		if [[ "$line" == *"$ip"* ]]; then
+			echo "Suspicious activity detected: $line"
+		fi
+	done
+done < "$log_file"

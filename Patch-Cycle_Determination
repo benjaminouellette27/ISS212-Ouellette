@@ -1,0 +1,19 @@
+# Sources
+# WK3 - Tool Dev 1 - Code Snippet
+
+#!/bin/bash
+
+read -p "Enter the year to check the patch cycle: " current_year
+if [ "$current_year" -lt 2000 ]; then
+	echo "Not within managed patch period"
+else
+	if ((current_year % 4 != 0)); then
+		echo "Standard Year"
+	elif ((current_year % 100 != 0)); then
+		echo "Patch Year"
+	elif ((current_year % 400 != 0)); then
+		echo "Standard Year"
+	else
+		echo "Patch Year"
+	fi
+fi

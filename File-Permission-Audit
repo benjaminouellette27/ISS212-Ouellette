@@ -1,0 +1,15 @@
+# Sources
+# Wk3-fileperm.sh
+# Used chat gpt to debug line 6
+
+#!/bin/bash
+
+echo "Checking for files with world-writable permissions..."
+for file in *; do
+	if [ -f "$file" ]; then
+		perms=$(ls -l "$file" | awk '{print $1}')
+		if [[ "$perms" == *w* && "$perms" == *"rw-"* ]]; then
+			echo "Warning: $file has writable permission ($perms)."
+		fi
+	fi
+done
